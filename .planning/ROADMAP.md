@@ -28,12 +28,12 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. User sees upcoming birthdays sorted nearest-first with clear sections (today, this week, this month, later)
   3. User can search contacts by name and tap any birthday to see a detail view with name, date, and days until
   4. App makes zero network requests and stores all contact data encrypted at rest with no third-party code
-**Plans**: TBD
+**Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: TBD
-- [ ] 01-02: TBD
-- [ ] 01-03: TBD
+- [ ] 01-01-PLAN.md -- Xcode project setup, Person model, BirthdayCalculator, ContactBridge
+- [ ] 01-02-PLAN.md -- ContactSyncService, onboarding flow (welcome, permission, import)
+- [ ] 01-03-PLAN.md -- Birthday list UI, detail view, search, settings, device verification
 
 ### Phase 2: Notification Engine
 **Goal**: User receives timely birthday notifications at their preferred time, with the app intelligently managing the iOS 64-notification ceiling
@@ -84,7 +84,7 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Contact Import and Birthday List | 0/3 | Not started | - |
+| 1. Contact Import and Birthday List | 0/3 | Planned | - |
 | 2. Notification Engine | 0/2 | Not started | - |
 | 3. Group Management | 0/2 | Not started | - |
 | 4. Widgets | 0/1 | Not started | - |
