@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-02-15)
 ## Current Position
 
 Phase: 1 of 4 (Contact Import and Birthday List)
-Plan: 0 of 3 in current phase
-Status: Ready to plan
-Last activity: 2026-02-15 -- Roadmap created
+Plan: 1 of 3 in current phase
+Status: Executing
+Last activity: 2026-02-15 -- Completed 01-01-PLAN.md
 
-Progress: [░░░░░░░░░░] 0%
+Progress: [#░░░░░░░░░] 8%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 0
-- Average duration: --
-- Total execution time: 0 hours
+- Total plans completed: 1
+- Average duration: 3min
+- Total execution time: 0.05 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| - | - | - | - |
+| 01-contact-import | 1 | 3min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: --
+- Last 5 plans: 3min
 - Trend: --
 
 *Updated after each plan completion*
@@ -44,6 +44,9 @@ Recent decisions affecting current work:
 
 - [Roadmap]: Security requirements (SECR-01 through SECR-04) embedded in Phase 1 as foundational constraints, not a separate phase
 - [Roadmap]: Groups depend on notification engine being stable first (research recommendation)
+- [01-01]: XcodeGen project.yml instead of hand-written .pbxproj for practical project generation on MacinCloud
+- [01-01]: BirthdayCalculator uses private resolvedDate helper to DRY Feb 29 handling
+- [01-01]: ContactBridge.upsert wraps fetch in do/catch with error logging
 
 ### Pending Todos
 
@@ -51,11 +54,11 @@ None yet.
 
 ### Blockers/Concerns
 
-- App Group container must be configured in Phase 1 even though widgets ship in Phase 4 (research flag)
-- Feb 29 birthdays and non-Gregorian calendars need explicit handling during Phase 1 data layer
+- ~~App Group container must be configured in Phase 1 even though widgets ship in Phase 4~~ (RESOLVED in 01-01: group.com.birthdayreminders configured in ModelConfiguration)
+- ~~Feb 29 birthdays and non-Gregorian calendars need explicit handling during Phase 1 data layer~~ (RESOLVED in 01-01: BirthdayCalculator maps Feb 29 to March 1 in non-leap years; ContactBridge resolves non-Gregorian via calendar conversion)
 
 ## Session Continuity
 
 Last session: 2026-02-15
-Stopped at: Phase 1 context gathered
-Resume file: .planning/phases/01-contact-import-and-birthday-list/01-CONTEXT.md
+Stopped at: Completed 01-01-PLAN.md
+Resume file: .planning/phases/01-contact-import-and-birthday-list/01-01-SUMMARY.md
