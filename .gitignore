@@ -1,0 +1,49 @@
+# Personal data
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.json
+!package.json
+!tsconfig.json
+!.planning/**/*.json
+
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+*.xcworkspace/xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+xcuserdata/
+
+# Swift Package Manager
+.build/
+Packages/
+Package.resolved
+
+# CocoaPods
+Pods/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Environment / secrets
+.env
+.env.*
+*.pem
+*.p12
+*.key
+
+# Archives
+*.ipa
+*.dSYM.zip
+*.dSYM
