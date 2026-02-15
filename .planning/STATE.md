@@ -10,27 +10,27 @@ See: .planning/PROJECT.md (updated 2026-02-15)
 ## Current Position
 
 Phase: 1 of 4 (Contact Import and Birthday List)
-Plan: 1 of 3 in current phase
+Plan: 2 of 3 in current phase
 Status: Executing
-Last activity: 2026-02-15 -- Completed 01-01-PLAN.md
+Last activity: 2026-02-15 -- Completed 01-02-PLAN.md
 
-Progress: [#░░░░░░░░░] 8%
+Progress: [##░░░░░░░░] 17%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 1
-- Average duration: 3min
-- Total execution time: 0.05 hours
+- Total plans completed: 2
+- Average duration: 2.5min
+- Total execution time: 0.08 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 01-contact-import | 1 | 3min | 3min |
+| 01-contact-import | 2 | 5min | 2.5min |
 
 **Recent Trend:**
-- Last 5 plans: 3min
+- Last 5 plans: 3min, 2min
 - Trend: --
 
 *Updated after each plan completion*
@@ -47,6 +47,9 @@ Recent decisions affecting current work:
 - [01-01]: XcodeGen project.yml instead of hand-written .pbxproj for practical project generation on MacinCloud
 - [01-01]: BirthdayCalculator uses private resolvedDate helper to DRY Feb 29 handling
 - [01-01]: ContactBridge.upsert wraps fetch in do/catch with error logging
+- [01-02]: ContactSyncService treats .limited same as .authorized for import -- CNContactStore only returns user-selected subset
+- [01-02]: Indeterminate ProgressView for import -- sub-3-second operation makes determinate bar counterproductive
+- [01-02]: @Bindable for syncService in OnboardingFlowView -- simpler than environment injection for single dependency
 
 ### Pending Todos
 
@@ -60,5 +63,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-15
-Stopped at: Completed 01-01-PLAN.md
-Resume file: .planning/phases/01-contact-import-and-birthday-list/01-01-SUMMARY.md
+Stopped at: Completed 01-02-PLAN.md
+Resume file: .planning/phases/01-contact-import-and-birthday-list/01-02-SUMMARY.md
