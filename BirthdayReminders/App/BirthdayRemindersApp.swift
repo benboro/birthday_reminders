@@ -24,23 +24,11 @@ struct BirthdayRemindersApp: App {
     var body: some Scene {
         WindowGroup {
             if hasCompletedOnboarding {
-                BirthdayListPlaceholderView()
+                BirthdayListView(syncService: syncService)
             } else {
                 OnboardingFlowView(syncService: syncService)
             }
         }
         .modelContainer(container)
-    }
-}
-
-/// Placeholder until the real birthday list is built in Plan 03.
-struct BirthdayListPlaceholderView: View {
-    var body: some View {
-        NavigationStack {
-            Text("Birthday List")
-                .font(.title)
-                .foregroundStyle(.secondary)
-                .navigationTitle("Birthdays")
-        }
     }
 }
