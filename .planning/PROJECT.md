@@ -50,7 +50,7 @@ Reliable, timely birthday notifications that you can configure per group so the 
 - **Testing on device**: Sideload via Xcode with a free Apple ID (no paid Developer account)
 - **Sideload limitation**: Free provisioning expires every 7 days — app must be re-signed weekly via Xcode
 - **No App Store distribution**: This is a personal-use app, not intended for public release
-- **Security**: Use a dedicated throwaway Apple ID for Xcode signing on MacinCloud — never sign in with your personal Apple ID on a shared cloud machine. Sign out of Xcode after each session. Keep 2FA enabled on all Apple IDs.
+- **Security**: Always sign out of Xcode after each MacinCloud session. Keep 2FA enabled on your Apple ID.
 
 ## Constraints
 
@@ -71,7 +71,7 @@ Reliable, timely birthday notifications that you can configure per group so the 
 | Lean feature set (no gift tracking) | Ship fast, do one thing well | — Pending |
 | Windows dev + MacinCloud builds | No local Mac available; MacinCloud PAYG is cheapest on-demand option with RDP + pre-installed Xcode | — Decided |
 | Free Apple ID sideloading | No App Store distribution needed; avoids $99/yr Developer account; accepts 7-day re-signing | — Decided |
-| Throwaway Apple ID for signing | Personal Apple ID should never be used on shared cloud machines; dedicated dev Apple ID isolates risk | — Decided |
+| Personal Apple ID for signing | Throwaway account creation failed; personal Apple ID is acceptable with 2FA enabled and signing out after each session | — Decided |
 
 ---
 *Last updated: 2026-02-15 after initialization*
