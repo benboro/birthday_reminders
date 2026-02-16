@@ -41,7 +41,7 @@ struct GroupDetailView: View {
             // MARK: - Notification Preference Section
             Section("Notification Preference") {
                 Picker("Preference", selection: $group.notificationPreference) {
-                    ForEach(NotificationPreference.allCases, id: \.self) { preference in
+                    ForEach(NotificationPreference.allCases, id: \.self) { (preference: NotificationPreference) in
                         Text(preference.rawValue).tag(preference)
                     }
                 }
@@ -61,7 +61,7 @@ struct GroupDetailView: View {
                     Text("No members yet")
                         .foregroundStyle(.secondary)
                 } else {
-                    ForEach(sortedMembers, id: \.contactIdentifier) { person in
+                    ForEach(sortedMembers, id: \.contactIdentifier) { (person: Person) in
                         HStack {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(person.displayName)

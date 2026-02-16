@@ -37,7 +37,7 @@ struct GroupMemberPickerView: View {
 
     var body: some View {
         List {
-            ForEach(filteredPeople, id: \.contactIdentifier) { person in
+            ForEach(filteredPeople, id: \.contactIdentifier) { (person: Person) in
                 Button {
                     toggleMembership(for: person)
                 } label: {
