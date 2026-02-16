@@ -8,10 +8,17 @@ struct InlineWidgetView: View {
 
     var body: some View {
         if let birthday = entry.upcomingBirthdays.first {
-            if birthday.daysUntil == 0 {
-                Text("\(Image(systemName: "gift.fill")) \(birthday.name)'s birthday!")
-            } else {
-                Text("\(Image(systemName: "gift")) \(birthday.name) \(birthday.daysUntilText)")
+            let icon = birthday.daysUntil == 0 ? "gift.fill" : "gift"
+            let fullText = birthday.daysUntil == 0
+                ? "\(birthday.name)'s birthday!"
+                : "\(birthday.name) \(birthday.daysUntilText)"
+            let shortText = birthday.daysUntil == 0
+                ? "\(birthday.firstName)'s birthday!"
+                : "\(birthday.firstName) \(birthday.daysUntilText)"
+
+            ViewThatFits {
+                Text("\(Image(systemName: icon)) \(fullText)")
+                Text("\(Image(systemName: icon)) \(shortText)")
             }
         } else {
             Text("No upcoming birthdays")

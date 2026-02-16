@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Home screen widget view for systemMedium family.
-/// Shows the next 3 upcoming birthdays with name and days until.
+/// Shows the next 4 upcoming birthdays with name and days until.
 struct MediumWidgetView: View {
     let entry: BirthdayTimelineEntry
 
@@ -13,7 +13,7 @@ struct MediumWidgetView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         } else {
             VStack(alignment: .leading, spacing: 6) {
-                ForEach(Array(entry.upcomingBirthdays.prefix(3).enumerated()), id: \.element.id) { index, birthday in
+                ForEach(Array(entry.upcomingBirthdays.prefix(4).enumerated()), id: \.element.id) { index, birthday in
                     HStack {
                         Text(birthday.name)
                             .font(.subheadline)
@@ -25,7 +25,7 @@ struct MediumWidgetView: View {
                             .foregroundStyle(.secondary)
                     }
 
-                    if index < min(entry.upcomingBirthdays.count, 3) - 1 {
+                    if index < min(entry.upcomingBirthdays.count, 4) - 1 {
                         Divider()
                     }
                 }

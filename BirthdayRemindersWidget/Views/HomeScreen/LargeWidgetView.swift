@@ -41,8 +41,8 @@ struct LargeWidgetView: View {
                             .font(.caption)
                             .foregroundStyle(.secondary)
                     }
-                    .padding(.horizontal, birthday.daysUntil == 0 ? 6 : 0)
-                    .padding(.vertical, birthday.daysUntil == 0 ? 4 : 0)
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 4)
                     .background(
                         birthday.daysUntil == 0
                             ? Color.accentColor.opacity(0.1)

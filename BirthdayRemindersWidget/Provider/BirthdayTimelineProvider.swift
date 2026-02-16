@@ -46,6 +46,7 @@ struct BirthdayTimelineProvider: TimelineProvider {
         let birthdays = sorted.prefix(8).map { person in
             WidgetBirthday(
                 name: person.displayName,
+                firstName: person.firstName,
                 daysUntil: person.daysUntilBirthday,
                 month: person.birthdayMonth,
                 day: person.birthdayDay,

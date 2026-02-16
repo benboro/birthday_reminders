@@ -5,6 +5,7 @@ import WidgetKit
 struct WidgetBirthday: Identifiable {
     let id = UUID()
     let name: String
+    let firstName: String
     let daysUntil: Int
     let month: Int
     let day: Int
@@ -30,9 +31,9 @@ struct BirthdayTimelineEntry: TimelineEntry {
         BirthdayTimelineEntry(
             date: .now,
             upcomingBirthdays: [
-                WidgetBirthday(name: "John Doe", daysUntil: 0, month: 2, day: 15, year: 1990),
-                WidgetBirthday(name: "Jane Smith", daysUntil: 3, month: 2, day: 18, year: nil),
-                WidgetBirthday(name: "Bob Wilson", daysUntil: 7, month: 2, day: 22, year: 1985),
+                WidgetBirthday(name: "John Doe", firstName: "John", daysUntil: 0, month: 2, day: 15, year: 1990),
+                WidgetBirthday(name: "Jane Smith", firstName: "Jane", daysUntil: 3, month: 2, day: 18, year: nil),
+                WidgetBirthday(name: "Bob Wilson", firstName: "Bob", daysUntil: 7, month: 2, day: 22, year: 1985),
             ]
         )
     }
