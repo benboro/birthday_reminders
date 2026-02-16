@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-15)
 
 **Core value:** Reliable, timely birthday notifications that you can configure per group so the right people get the right level of attention.
-**Current focus:** All phases complete -- project feature-complete
+**Current focus:** All phases complete -- project ready for final build on MacinCloud
 
 ## Current Position
 
-Phase: 4 of 4 (Widgets)
-Plan: 2 of 2 in current phase (04-02 complete)
-Status: All Plans Complete
-Last activity: 2026-02-15 -- Completed 04-02 widget views
+Phase: 5 of 5 (Widget Polish)
+Plan: 1 of 1 in current phase (complete)
+Status: Phase 5 complete -- all plans executed
+Last activity: 2026-02-16 -- Completed 05-01 Widget Polish
 
 Progress: [##########] 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 9
-- Average duration: 3.7min
-- Total execution time: 0.55 hours
+- Total plans completed: 10
+- Average duration: 3.6min
+- Total execution time: 0.60 hours
 
 **By Phase:**
 
@@ -31,9 +31,10 @@ Progress: [##########] 100%
 | 02-notification-engine | 2 | 5min | 2.5min |
 | 03-group-management | 2 | 5min | 2.5min |
 | 04-widgets | 2 | 3min | 1.5min |
+| 05-widget-polish | 1 | 3min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: 3min, 3min, 2min, 2min, 1min
+- Last 5 plans: 3min, 2min, 2min, 1min, 3min
 - Trend: stable/improving
 
 *Updated after each plan completion*
@@ -75,10 +76,17 @@ Recent decisions affecting current work:
 - [04-02]: Widget family dispatcher pattern: Group+switch on widgetFamily environment for both home and lock screen entry views
 - [04-02]: containerBackground(.fill.tertiary) on dispatcher Group rather than individual size views for consistency
 - [04-02]: Circular gauge capped at 30-day range for meaningful visual fill at any countdown distance
+- [05-01]: Uniform padding on all large widget rows (6pt horizontal, 4pt vertical) with background-only today highlight
+- [05-01]: ViewThatFits with full-name then first-name fallback for inline widget conciseness
+- [05-01]: Added gitignore exception for asset catalog Contents.json files
 
 ### Pending Todos
 
 None yet.
+
+### Roadmap Evolution
+
+- Phase 5 added: Widget Polish -- address UAT cosmetic feedback (today-row alignment, inline widget verbosity, medium widget density)
 
 ### Blockers/Concerns
 
@@ -87,6 +95,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-02-15
-Stopped at: Completed 04-02-PLAN.md (final plan)
-Resume file: .planning/phases/04-widgets/04-02-SUMMARY.md
+Last session: 2026-02-16
+Stopped at: Completed 05-01-PLAN.md -- all phases complete
+Resume file: .planning/phases/05-widget-polish/05-01-SUMMARY.md
