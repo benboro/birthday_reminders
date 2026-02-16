@@ -6,25 +6,8 @@ import SwiftData
 ///
 /// Uses the same app group container (group.com.birthdayreminders) as the main app
 /// to read Person records. Refreshes at midnight when days-until values change.
-@MainActor
 struct BirthdayTimelineProvider: TimelineProvider {
     typealias Entry = BirthdayTimelineEntry
-
-    /// Creates a ModelContainer pointing at the shared app group database.
-    private var sharedModelContainer: ModelContainer {
-        let schema = Schema([Person.self, BirthdayGroup.self])
-        let config = ModelConfiguration(
-            "BirthdayReminders",
-            schema: schema,
-            isStoredInMemoryOnly: false,
-            groupContainer: .identifier("group.com.birthdayreminders")
-        )
-        do {
-            return try ModelContainer(for: schema, configurations: [config])
-        } catch {
-            fatalError("Failed to create widget ModelContainer: \(error)")
-        }
-    }
 
     func placeholder(in context: Context) -> BirthdayTimelineEntry {
         BirthdayTimelineEntry.placeholder
@@ -46,9 +29,19 @@ struct BirthdayTimelineProvider: TimelineProvider {
 
     /// Fetches upcoming birthdays from the shared SwiftData store, sorted by days until birthday.
     private func fetchEntry() -> BirthdayTimelineEntry {
-        let container = sharedModelContainer
+        let schema = Schema([Person.self, BirthdayGroup.self])
+        let config = ModelConfiguration(
+            "BirthdayReminders",
+            schema: schema,
+            isStoredInMemoryOnly: false,
+            groupContainer: .identifier("group.com.birthdayreminders")
+        )
+        guard let container = try? ModelContainer(for: schema, configurations: [config]) else {
+            return BirthdayTimelineEntry(date: .now, upcomingBirthdays: [])
+        }
+        let context = ModelContext(container)
         let descriptor = FetchDescriptor<Person>()
-        let people = (try? container.mainContext.fetch(descriptor)) ?? []
+        let people = (try? context.fetch(descriptor)) ?? []
         let sorted = people.sorted { $0.daysUntilBirthday < $1.daysUntilBirthday }
         let birthdays = sorted.prefix(8).map { person in
             WidgetBirthday(
