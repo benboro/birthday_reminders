@@ -59,7 +59,7 @@ struct GroupMemberPickerView: View {
 
                         if selectedIdentifiers.contains(person.contactIdentifier) {
                             Image(systemName: "checkmark")
-                                .foregroundStyle(.accent)
+                                .foregroundStyle(.tint)
                                 .fontWeight(.semibold)
                         }
                     }
