@@ -33,6 +33,8 @@ targets:
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
     dependencies:
       - target: BirthdayRemindersWidget
+        embed: true
+        link: false
     entitlements:
       path: BirthdayReminders/BirthdayReminders.entitlements
       properties:

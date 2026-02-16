@@ -29,11 +29,13 @@ struct BirthdayTimelineProvider: TimelineProvider {
         BirthdayTimelineEntry.placeholder
     }
 
+    @MainActor
     func getSnapshot(in context: Context, completion: @escaping (BirthdayTimelineEntry) -> Void) {
         let entry = fetchEntry()
         completion(entry)
     }
 
+    @MainActor
     func getTimeline(in context: Context, completion: @escaping (Timeline<BirthdayTimelineEntry>) -> Void) {
         let entry = fetchEntry()
         let midnight = Calendar.current.startOfDay(
