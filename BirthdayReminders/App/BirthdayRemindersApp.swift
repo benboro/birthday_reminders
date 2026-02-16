@@ -15,12 +15,12 @@ struct BirthdayRemindersApp: App {
     init() {
         let config = ModelConfiguration(
             "BirthdayReminders",
-            schema: Schema([Person.self]),
+            schema: Schema([Person.self, BirthdayGroup.self]),
             isStoredInMemoryOnly: false,
             groupContainer: .identifier("group.com.birthdayreminders")
         )
         do {
-            container = try ModelContainer(for: Person.self, configurations: config)
+            container = try ModelContainer(for: Person.self, BirthdayGroup.self, configurations: config)
         } catch {
             fatalError("Failed to create ModelContainer: \(error)")
         }

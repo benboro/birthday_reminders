@@ -33,6 +33,12 @@ final class Person: Identifiable {
     /// Calendar identifier for non-Gregorian birthdays. Nil means Gregorian.
     var birthdayCalendarId: String?
 
+    // MARK: - Groups
+
+    /// Groups this person belongs to. Inverse side of BirthdayGroup.members.
+    /// Default empty array for SwiftData many-to-many compatibility.
+    var groups: [BirthdayGroup] = []
+
     // MARK: - Computed Properties
 
     /// Full display name, handling empty first or last name gracefully.
