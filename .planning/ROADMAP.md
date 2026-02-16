@@ -12,8 +12,8 @@ This roadmap delivers a local-only iOS birthday reminder app in four phases. Pha
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Contact Import and Birthday List** - Data foundation, contact sync, upcoming birthday list, and security constraints
-- [ ] **Phase 2: Notification Engine** - Birthday notifications with configurable timing, delivery time, and overflow scheduling
+- [x] **Phase 1: Contact Import and Birthday List** - Data foundation, contact sync, upcoming birthday list, and security constraints
+- [x] **Phase 2: Notification Engine** - Birthday notifications with configurable timing, delivery time, and overflow scheduling
 - [ ] **Phase 3: Group Management** - Two-way Contacts group sync with per-group notification preferences
 - [ ] **Phase 4: Widgets** - Home screen and lock screen widgets showing upcoming birthdays
 
@@ -85,6 +85,6 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Contact Import and Birthday List | 3/3 | Complete | 2026-02-15 |
-| 2. Notification Engine | 0/2 | Not started | - |
+| 2. Notification Engine | 2/2 | Complete | 2026-02-15 |
 | 3. Group Management | 0/2 | Not started | - |
 | 4. Widgets | 0/1 | Not started | - |
