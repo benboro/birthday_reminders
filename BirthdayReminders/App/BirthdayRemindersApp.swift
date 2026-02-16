@@ -1,5 +1,6 @@
 import SwiftUI
 import SwiftData
+import WidgetKit
 @preconcurrency import UserNotifications
 
 @main
@@ -51,6 +52,7 @@ struct BirthdayRemindersApp: App {
                         deliveryHour: hour,
                         deliveryMinute: minute
                     )
+                    WidgetCenter.shared.reloadAllTimelines()
                 }
             }
             .onChange(of: scenePhase) { _, newPhase in
@@ -66,6 +68,7 @@ struct BirthdayRemindersApp: App {
                             deliveryHour: hour,
                             deliveryMinute: minute
                         )
+                        WidgetCenter.shared.reloadAllTimelines()
                     }
                 }
             }
