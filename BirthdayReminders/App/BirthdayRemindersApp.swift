@@ -11,6 +11,7 @@ struct BirthdayRemindersApp: App {
 
     private let notificationScheduler = NotificationScheduler()
     private let notificationDelegate = NotificationDelegate()
+    private let groupSyncService = GroupSyncService()
 
     init() {
         let config = ModelConfiguration(
@@ -32,12 +33,13 @@ struct BirthdayRemindersApp: App {
         WindowGroup {
             Group {
                 if hasCompletedOnboarding {
-                    BirthdayListView(syncService: syncService, notificationScheduler: notificationScheduler)
+                    BirthdayListView(syncService: syncService, notificationScheduler: notificationScheduler, groupSyncService: groupSyncService)
                 } else {
                     OnboardingFlowView(syncService: syncService, notificationScheduler: notificationScheduler)
                 }
             }
             .task {
+                syncService.groupSyncService = groupSyncService
                 syncService.onImportComplete = { [container, notificationScheduler] _ in
                     let context = container.mainContext
                     let descriptor = FetchDescriptor<Person>()

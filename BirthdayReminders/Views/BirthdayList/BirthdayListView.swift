@@ -17,6 +17,7 @@ struct BirthdayListView: View {
 
     var syncService: ContactSyncService
     var notificationScheduler: NotificationScheduler
+    var groupSyncService: GroupSyncService
 
     // MARK: - Computed Properties
 
@@ -61,6 +62,17 @@ struct BirthdayListView: View {
                 prompt: "Search contacts"
             )
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    NavigationLink {
+                        GroupListView(
+                            groupSyncService: groupSyncService,
+                            notificationScheduler: notificationScheduler
+                        )
+                    } label: {
+                        Image(systemName: "person.3")
+                    }
+                }
+
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {
                         SettingsView(syncService: syncService, notificationScheduler: notificationScheduler)
