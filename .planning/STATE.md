@@ -5,33 +5,34 @@
 See: .planning/PROJECT.md (updated 2026-02-15)
 
 **Core value:** Reliable, timely birthday notifications that you can configure per group so the right people get the right level of attention.
-**Current focus:** Phase 1 - Contact Import and Birthday List
+**Current focus:** Phase 2 - Notification Engine
 
 ## Current Position
 
-Phase: 1 of 4 (Contact Import and Birthday List) -- COMPLETE
-Plan: 3 of 3 in current phase
-Status: Phase Complete
-Last activity: 2026-02-15 -- Completed 01-03-PLAN.md (Phase 1 done)
+Phase: 2 of 4 (Notification Engine)
+Plan: 1 of 2 in current phase
+Status: Executing
+Last activity: 2026-02-15 -- Completed 02-01-PLAN.md
 
-Progress: [####░░░░░░] 38%
+Progress: [#####░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 3
-- Average duration: 6.7min
-- Total execution time: 0.33 hours
+- Total plans completed: 4
+- Average duration: 5.8min
+- Total execution time: 0.38 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 01-contact-import | 3 | 20min | 6.7min |
+| 02-notification-engine | 1 | 3min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: 3min, 2min, 15min
-- Trend: --
+- Last 5 plans: 3min, 2min, 15min, 3min
+- Trend: stable
 
 *Updated after each plan completion*
 
@@ -54,6 +55,9 @@ Recent decisions affecting current work:
 - [01-03]: Today highlighting with Color.accentColor.opacity(0.1) -- system-aware color for light and dark mode
 - [01-03]: CNContactViewController with allowsActions=false, allowsEditing=true -- read-only quick actions but editable for birthday corrections
 - [01-03]: Dark mode verification deferred -- simulator toggle issue, app uses system colors throughout
+- [02-01]: Day-before scheduled before day-of in loop to prioritize earlier-firing reminders within 64-slot cap
+- [02-01]: NotificationScheduler passed via init parameters, not environment injection, for explicit dependency wiring
+- [02-01]: BirthdayListView accepts notificationScheduler parameter early to avoid rewrite when settings page is added
 
 ### Pending Todos
 
@@ -67,5 +71,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-15
-Stopped at: Completed 01-03-PLAN.md -- Phase 1 fully complete
-Resume file: .planning/phases/01-contact-import-and-birthday-list/01-03-SUMMARY.md
+Stopped at: Completed 02-01-PLAN.md
+Resume file: .planning/phases/02-notification-engine/02-01-SUMMARY.md
