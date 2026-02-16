@@ -58,11 +58,11 @@ Plans:
   1. User can create, rename, and delete groups within the app and see those changes reflected in iOS Contacts
   2. User can assign and remove contacts from groups
   3. User can set per-group notification preferences (same day, day before, or both) and the notification engine respects those preferences
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD
-- [ ] 03-02: TBD
+- [ ] 03-01-PLAN.md -- BirthdayGroup model, GroupSyncService, NotificationScheduler per-group preferences, import integration
+- [ ] 03-02-PLAN.md -- Group list/detail/member picker UI, app navigation wiring, post-change rescheduling
 
 ### Phase 4: Widgets
 **Goal**: User can glance at upcoming birthdays from the home screen or lock screen without opening the app
