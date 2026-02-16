@@ -31,9 +31,41 @@ targets:
         INFOPLIST_FILE: BirthdayReminders/Info.plist
         CODE_SIGN_ENTITLEMENTS: BirthdayReminders/BirthdayReminders.entitlements
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+    dependencies:
+      - target: BirthdayRemindersWidget
     entitlements:
       path: BirthdayReminders/BirthdayReminders.entitlements
       properties:
         com.apple.security.application-groups:
           - group.com.birthdayreminders
         com.apple.developer.default-data-protection: NSFileProtectionComplete
+
+  BirthdayRemindersWidget:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "18.0"
+    sources:
+      - path: BirthdayRemindersWidget
+      - path: BirthdayReminders/Models/Person.swift
+      - path: BirthdayReminders/Models/BirthdayGroup.swift
+      - path: BirthdayReminders/Services/BirthdayCalculator.swift
+      - path: BirthdayReminders/Extensions/Date+Birthday.swift
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.birthdayreminders.widget
+        INFOPLIST_FILE: BirthdayRemindersWidget/Info.plist
+        CODE_SIGN_ENTITLEMENTS: BirthdayRemindersWidget/BirthdayRemindersWidget.entitlements
+        SWIFT_VERSION: "6.0"
+        SKIP_INSTALL: true
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME: WidgetBackground
+        TARGETED_DEVICE_FAMILY: "1"
+        GENERATE_INFOPLIST_FILE: false
+    entitlements:
+      path: BirthdayRemindersWidget/BirthdayRemindersWidget.entitlements
+      properties:
+        com.apple.security.application-groups:
+          - group.com.birthdayreminders
+    dependencies:
+      - sdk: SwiftUI.framework
+      - sdk: WidgetKit.framework
