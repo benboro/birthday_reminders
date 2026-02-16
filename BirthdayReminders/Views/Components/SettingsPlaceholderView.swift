@@ -1,11 +1,15 @@
 import SwiftUI
+import SwiftData
 
-/// Settings screen accessible via the gear icon in the navigation bar.
+/// Full settings screen with Contacts and Notifications sections.
 ///
-/// Currently a stub containing only the manual re-import button.
-/// Phase 2 will add notification settings here.
-struct SettingsPlaceholderView: View {
+/// Replaces the former SettingsPlaceholderView stub now that Phase 2
+/// delivers notification configuration. Contains the manual re-import
+/// button and embeds NotificationSettingsView for delivery time and
+/// permission management.
+struct SettingsView: View {
     var syncService: ContactSyncService
+    var notificationScheduler: NotificationScheduler
     @Environment(\.modelContext) private var modelContext
 
     @State private var isImporting = false
@@ -21,6 +25,9 @@ struct SettingsPlaceholderView: View {
                         await syncService.importContacts(into: modelContext)
                         lastImportCount = syncService.importedCount
                         isImporting = false
+
+                        // Reschedule notifications after re-import
+                        await rescheduleAfterImport()
                     }
                 } label: {
                     HStack {
@@ -42,7 +49,24 @@ struct SettingsPlaceholderView: View {
                         .foregroundStyle(.secondary)
                 }
             }
+
+            NotificationSettingsView(notificationScheduler: notificationScheduler)
         }
         .navigationTitle("Settings")
+    }
+
+    // MARK: - Post-Import Rescheduling
+
+    /// Reads delivery time from UserDefaults and reschedules all notifications.
+    private func rescheduleAfterImport() async {
+        let hour = UserDefaults.standard.object(forKey: "notificationHour") as? Int ?? 9
+        let minute = UserDefaults.standard.object(forKey: "notificationMinute") as? Int ?? 0
+        let descriptor = FetchDescriptor<Person>()
+        guard let people = try? modelContext.fetch(descriptor) else { return }
+        await notificationScheduler.reschedule(
+            people: people,
+            deliveryHour: hour,
+            deliveryMinute: minute
+        )
     }
 }

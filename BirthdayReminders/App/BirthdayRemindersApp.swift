@@ -37,6 +37,20 @@ struct BirthdayRemindersApp: App {
             }
         }
         .modelContainer(container)
+        .task {
+            syncService.onImportComplete = { [container, notificationScheduler] _ in
+                let context = container.mainContext
+                let descriptor = FetchDescriptor<Person>()
+                guard let people = try? context.fetch(descriptor) else { return }
+                let hour = UserDefaults.standard.object(forKey: "notificationHour") as? Int ?? 9
+                let minute = UserDefaults.standard.object(forKey: "notificationMinute") as? Int ?? 0
+                await notificationScheduler.reschedule(
+                    people: people,
+                    deliveryHour: hour,
+                    deliveryMinute: minute
+                )
+            }
+        }
         .onChange(of: scenePhase) { _, newPhase in
             if newPhase == .active {
                 Task {

@@ -63,7 +63,7 @@ struct BirthdayListView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {
-                        SettingsPlaceholderView(syncService: syncService)
+                        SettingsView(syncService: syncService, notificationScheduler: notificationScheduler)
                     } label: {
                         Image(systemName: "gear")
                     }

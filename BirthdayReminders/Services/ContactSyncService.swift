@@ -42,6 +42,12 @@ final class ContactSyncService {
     /// Most recent error from authorization or import operations.
     private(set) var error: Error? = nil
 
+    // MARK: - Callbacks
+
+    /// Optional callback invoked after a successful import with the number of contacts imported.
+    /// Allows the app root to wire up notification rescheduling after any import source.
+    var onImportComplete: ((_ importedCount: Int) async -> Void)?
+
     // MARK: - Private
 
     /// Single CNContactStore instance for all operations.
@@ -139,6 +145,9 @@ final class ContactSyncService {
 
             // Log count only -- names are PII (SECR-04)
             Logger.sync.info("Import complete: \(self.importedCount) contacts with birthdays")
+
+            // Notify listeners (e.g., notification rescheduling)
+            await onImportComplete?(importedCount)
 
         } catch {
             self.error = error
