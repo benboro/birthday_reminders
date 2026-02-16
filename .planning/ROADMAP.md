@@ -16,6 +16,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 - [x] **Phase 2: Notification Engine** - Birthday notifications with configurable timing, delivery time, and overflow scheduling
 - [ ] **Phase 3: Group Management** - Two-way Contacts group sync with per-group notification preferences
 - [ ] **Phase 4: Widgets** - Home screen and lock screen widgets showing upcoming birthdays
+- [ ] **Phase 5: Widget Polish** - Address UAT cosmetic feedback: today-row alignment, inline widget verbosity, medium widget density, app icon
 
 ## Phase Details
 
@@ -81,11 +82,25 @@ Plans:
 ## Progress
 
 **Execution Order:**
-Phases execute in numeric order: 1 -> 2 -> 3 -> 4
+Phases execute in numeric order: 1 -> 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Contact Import and Birthday List | 3/3 | Complete | 2026-02-15 |
 | 2. Notification Engine | 2/2 | Complete | 2026-02-15 |
-| 3. Group Management | 0/2 | Not started | - |
-| 4. Widgets | 0/2 | Not started | - |
+| 3. Group Management | 2/2 | Complete | 2026-02-15 |
+| 4. Widgets | 2/2 | Complete | 2026-02-15 |
+| 5. Widget Polish | 0/1 | Not started | - |
+
+### Phase 5: Widget Polish
+**Goal**: Widget views are polished based on UAT feedback -- today-row alignment fixed, inline widget uses concise first-name text, medium widget shows more entries, and app uses the provided birthday calendar image as its icon
+**Depends on**: Phase 4
+**Success Criteria** (what must be TRUE):
+  1. Large widget today-highlighted row is aligned with other rows (no extra margin)
+  2. Inline lock screen widget shows first name only with relative text ("in 3 days", "tomorrow", "today")
+  3. Medium widget displays more than 3 entries if space allows
+  4. App uses the provided birthday calendar image as its app icon
+**Plans**: 1 plan
+
+Plans:
+- [ ] 05-01-PLAN.md -- Widget view fixes (alignment, entry count, inline firstName), app icon asset catalog setup
