@@ -6,6 +6,7 @@ import SwiftData
 ///
 /// Uses the same app group container (group.com.birthdayreminders) as the main app
 /// to read Person records. Refreshes at midnight when days-until values change.
+@MainActor
 struct BirthdayTimelineProvider: TimelineProvider {
     typealias Entry = BirthdayTimelineEntry
 
@@ -29,13 +30,11 @@ struct BirthdayTimelineProvider: TimelineProvider {
         BirthdayTimelineEntry.placeholder
     }
 
-    @MainActor
     func getSnapshot(in context: Context, completion: @escaping (BirthdayTimelineEntry) -> Void) {
         let entry = fetchEntry()
         completion(entry)
     }
 
-    @MainActor
     func getTimeline(in context: Context, completion: @escaping (Timeline<BirthdayTimelineEntry>) -> Void) {
         let entry = fetchEntry()
         let midnight = Calendar.current.startOfDay(
@@ -46,7 +45,6 @@ struct BirthdayTimelineProvider: TimelineProvider {
     }
 
     /// Fetches upcoming birthdays from the shared SwiftData store, sorted by days until birthday.
-    @MainActor
     private func fetchEntry() -> BirthdayTimelineEntry {
         let container = sharedModelContainer
         let descriptor = FetchDescriptor<Person>()
