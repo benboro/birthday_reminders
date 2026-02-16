@@ -37,5 +37,7 @@
 	</array>
 	<key>NSContactsUsageDescription</key>
 	<string>Birthday Reminders needs access to your contacts to find birthdays and remind you about them.</string>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>Birthday Reminders sends notifications on and before birthdays so you never miss one.</string>
 </dict>
 </plist>

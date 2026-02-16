@@ -1,13 +1,15 @@
 import SwiftUI
+import SwiftData
 
 /// Steps in the onboarding state machine.
 ///
-/// Drives the welcome -> permission -> import -> complete flow.
+/// Drives the welcome -> permission -> import -> notification primer -> complete flow.
 /// Permission denied is an alternate path with recovery options.
 enum OnboardingStep: Equatable {
     case welcome
     case permissionRequest
     case importing
+    case notificationPermission
     case complete
     case permissionDenied
 }
@@ -21,6 +23,9 @@ struct OnboardingFlowView: View {
     @State private var step: OnboardingStep = .welcome
     @Bindable var syncService: ContactSyncService
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    @Environment(\.modelContext) private var modelContext
+
+    let notificationScheduler: NotificationScheduler
 
     var body: some View {
         Group {
@@ -49,9 +54,33 @@ struct OnboardingFlowView: View {
 
             case .importing:
                 ImportProgressView(syncService: syncService) {
-                    hasCompletedOnboarding = true
-                    step = .complete
+                    step = .notificationPermission
                 }
+
+            case .notificationPermission:
+                NotificationPermissionView(
+                    onEnable: {
+                        Task {
+                            let granted = await notificationScheduler.requestPermission()
+                            if granted {
+                                let descriptor = FetchDescriptor<Person>()
+                                if let people = try? modelContext.fetch(descriptor) {
+                                    await notificationScheduler.reschedule(
+                                        people: people,
+                                        deliveryHour: 9,
+                                        deliveryMinute: 0
+                                    )
+                                }
+                            }
+                            hasCompletedOnboarding = true
+                            step = .complete
+                        }
+                    },
+                    onSkip: {
+                        hasCompletedOnboarding = true
+                        step = .complete
+                    }
+                )
 
             case .complete:
                 // Handled by the parent -- once hasCompletedOnboarding is true,

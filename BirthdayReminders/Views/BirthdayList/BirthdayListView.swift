@@ -16,6 +16,7 @@ struct BirthdayListView: View {
     @State private var showingSettings = false
 
     var syncService: ContactSyncService
+    var notificationScheduler: NotificationScheduler
 
     // MARK: - Computed Properties
 
