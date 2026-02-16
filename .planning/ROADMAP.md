@@ -44,11 +44,11 @@ Plans:
   2. User can configure what time of day all notifications are delivered
   3. App schedules the most important 64 notifications and backfills as slots free up, so no birthday is silently dropped
   4. User sees a contextual pre-permission screen before the system notification prompt appears
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: TBD
-- [ ] 02-02: TBD
+- [ ] 02-01-PLAN.md -- NotificationScheduler actor, NotificationDelegate, pre-permission primer, onboarding integration, scenePhase rescheduling
+- [ ] 02-02-PLAN.md -- Delivery time settings view, post-import rescheduling, settings integration
 
 ### Phase 3: Group Management
 **Goal**: User can organize contacts into groups that sync bidirectionally with iOS Contacts and control notification behavior per group
