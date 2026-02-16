@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-15)
 
 **Core value:** Reliable, timely birthday notifications that you can configure per group so the right people get the right level of attention.
-**Current focus:** Phase 3 complete, ready for Phase 4
+**Current focus:** Phase 4 in progress, widget extension infrastructure complete
 
 ## Current Position
 
-Phase: 3 of 4 (Group Management) -- COMPLETE
-Plan: 2 of 2 in current phase (all complete)
-Status: Phase 03 complete
-Last activity: 2026-02-15 -- Completed 03-02 group management UI
+Phase: 4 of 4 (Widgets)
+Plan: 1 of 2 in current phase (04-01 complete)
+Status: Executing Phase 04
+Last activity: 2026-02-15 -- Completed 04-01 widget extension infrastructure
 
-Progress: [########░░] 80%
+Progress: [#########░] 90%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 7
-- Average duration: 4.4min
-- Total execution time: 0.50 hours
+- Total plans completed: 8
+- Average duration: 4.1min
+- Total execution time: 0.53 hours
 
 **By Phase:**
 
@@ -30,9 +30,10 @@ Progress: [########░░] 80%
 | 01-contact-import | 3 | 20min | 6.7min |
 | 02-notification-engine | 2 | 5min | 2.5min |
 | 03-group-management | 2 | 5min | 2.5min |
+| 04-widgets | 1 | 2min | 2min |
 
 **Recent Trend:**
-- Last 5 plans: 2min, 15min, 3min, 3min, 2min
+- Last 5 plans: 15min, 3min, 3min, 2min, 2min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -68,6 +69,9 @@ Recent decisions affecting current work:
 - [03-02]: Groups toolbar button on topBarLeading (person.3 icon) to avoid crowding settings gear on trailing side
 - [03-02]: Segmented Picker for NotificationPreference -- 3 cases makes segments ideal for quick visual scanning
 - [03-02]: GroupMemberPickerView commits each add/remove immediately rather than batching on dismiss
+- [04-01]: @preconcurrency import WidgetKit for Swift 6 strict concurrency compatibility
+- [04-01]: Shared source files via individual path references in XcodeGen rather than extracting to Shared/ directory
+- [04-01]: Widget timeline refreshes at midnight via .after(midnight) policy for day-boundary accuracy
 
 ### Pending Todos
 
@@ -81,5 +85,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-15
-Stopped at: Completed 03-02-PLAN.md (Phase 03 complete)
-Resume file: .planning/phases/03-group-management/03-02-SUMMARY.md
+Stopped at: Completed 04-01-PLAN.md
+Resume file: .planning/phases/04-widgets/04-01-SUMMARY.md
