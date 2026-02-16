@@ -1,4 +1,5 @@
 @preconcurrency import UserNotifications
+import SwiftData
 import os
 
 /// Actor-isolated notification scheduler that manages the iOS 64-notification ceiling.
@@ -66,21 +67,27 @@ actor NotificationScheduler {
         // 3. Sort by nearest birthday
         let sorted = people.sorted { $0.daysUntilBirthday < $1.daysUntilBirthday }
 
-        // 4. Generate requests, capped at 64
+        // 4. Generate requests, capped at 64, filtered by per-group notification preference
         var requests: [UNNotificationRequest] = []
         for person in sorted {
             if requests.count >= 64 { break }
 
+            let preference = effectivePreference(for: person)
+
             // Day-before notification (check first since it fires earlier)
-            if let dayBefore = makeRequest(person: person, offsetDays: -1, hour: deliveryHour, minute: deliveryMinute) {
-                requests.append(dayBefore)
+            if preference == .dayBeforeOnly || preference == .both {
+                if let dayBefore = makeRequest(person: person, offsetDays: -1, hour: deliveryHour, minute: deliveryMinute) {
+                    requests.append(dayBefore)
+                }
             }
 
             if requests.count >= 64 { break }
 
             // Day-of notification
-            if let dayOf = makeRequest(person: person, offsetDays: 0, hour: deliveryHour, minute: deliveryMinute) {
-                requests.append(dayOf)
+            if preference == .dayOfOnly || preference == .both {
+                if let dayOf = makeRequest(person: person, offsetDays: 0, hour: deliveryHour, minute: deliveryMinute) {
+                    requests.append(dayOf)
+                }
             }
         }
 
@@ -94,6 +101,35 @@ actor NotificationScheduler {
         }
 
         Logger.notifications.info("Scheduled \(requests.count) notifications for \(people.count) contacts")
+    }
+
+    // MARK: - Group Preferences
+
+    /// Determines the effective notification preference for a person
+    /// based on their group memberships.
+    ///
+    /// Resolution rules:
+    /// - Ungrouped contacts default to .both (backward compatible with Phase 2).
+    /// - If any group has .both, returns .both.
+    /// - If groups contain both .dayOfOnly and .dayBeforeOnly, returns .both (most permissive).
+    /// - Otherwise returns whichever single preference exists.
+    func effectivePreference(for person: Person) -> NotificationPreference {
+        let groups = person.groups
+        if groups.isEmpty { return .both }
+
+        // Most permissive wins: if any group says .both, use .both
+        if groups.contains(where: { $0.notificationPreference == .both }) {
+            return .both
+        }
+
+        // If both dayOfOnly and dayBeforeOnly exist across groups, that means .both
+        let hasDayOf = groups.contains(where: { $0.notificationPreference == .dayOfOnly })
+        let hasDayBefore = groups.contains(where: { $0.notificationPreference == .dayBeforeOnly })
+        if hasDayOf && hasDayBefore { return .both }
+
+        // Otherwise, return whichever is set
+        if hasDayBefore { return .dayBeforeOnly }
+        return .dayOfOnly
     }
 
     // MARK: - Private Helpers

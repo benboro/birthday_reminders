@@ -48,6 +48,11 @@ final class ContactSyncService {
     /// Allows the app root to wire up notification rescheduling after any import source.
     var onImportComplete: ((_ importedCount: Int) async -> Void)?
 
+    // MARK: - Dependencies
+
+    /// Optional group sync service. When set, group sync runs automatically after contact import.
+    var groupSyncService: GroupSyncService?
+
     // MARK: - Private
 
     /// Single CNContactStore instance for all operations.
@@ -142,6 +147,16 @@ final class ContactSyncService {
             )
 
             try? context.save()
+
+            // Sync groups from iOS Contacts if service is available
+            if let groupSyncService {
+                do {
+                    try groupSyncService.syncGroupsFromContacts(context: context)
+                    Logger.sync.info("Group sync completed after contact import")
+                } catch {
+                    Logger.sync.error("Group sync failed after contact import: \(error.localizedDescription)")
+                }
+            }
 
             // Log count only -- names are PII (SECR-04)
             Logger.sync.info("Import complete: \(self.importedCount) contacts with birthdays")
