@@ -32,7 +32,7 @@ struct BirthdayDetailView: View {
             VStack(spacing: 8) {
                 Image(systemName: "gift.circle.fill")
                     .font(.system(size: 60))
-                    .foregroundStyle(.accent)
+                    .foregroundStyle(Color.accentColor)
 
                 Text(person.displayName)
                     .font(.largeTitle)
