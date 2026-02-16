@@ -72,10 +72,11 @@ Plans:
   1. User can add small, medium, or large home screen widgets that display upcoming birthdays
   2. User can add a lock screen widget showing the next upcoming birthday
   3. Widget data stays current with the main app's contact data
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: TBD
+- [ ] 04-01-PLAN.md -- Widget extension target (XcodeGen, entitlements, Info.plist), TimelineProvider, TimelineEntry, main app reload wiring
+- [ ] 04-02-PLAN.md -- Home screen widget views (small/medium/large), lock screen widget views (circular/rectangular/inline), WidgetBundle entry point
 
 ## Progress
 
@@ -87,4 +88,4 @@ Phases execute in numeric order: 1 -> 2 -> 3 -> 4
 | 1. Contact Import and Birthday List | 3/3 | Complete | 2026-02-15 |
 | 2. Notification Engine | 2/2 | Complete | 2026-02-15 |
 | 3. Group Management | 0/2 | Not started | - |
-| 4. Widgets | 0/1 | Not started | - |
+| 4. Widgets | 0/2 | Not started | - |
