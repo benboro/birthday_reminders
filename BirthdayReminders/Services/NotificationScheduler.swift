@@ -2,12 +2,13 @@
 import SwiftData
 import os
 
-/// Actor-isolated notification scheduler that manages the iOS 64-notification ceiling.
+/// MainActor-isolated notification scheduler that manages the iOS 64-notification ceiling.
 ///
 /// Sorts contacts by nearest birthday, generates day-of and day-before notification
 /// requests, and caps the total at 64 (iOS hard limit). Uses deterministic request
 /// identifiers so rescheduling naturally replaces previous notifications.
-actor NotificationScheduler {
+@MainActor
+final class NotificationScheduler {
     private let center = UNUserNotificationCenter.current()
 
     // MARK: - Permission Management
