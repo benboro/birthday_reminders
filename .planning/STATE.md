@@ -9,19 +9,19 @@ See: .planning/PROJECT.md (updated 2026-02-15)
 
 ## Current Position
 
-Phase: 2 of 4 (Notification Engine) -- COMPLETE
-Plan: 2 of 2 in current phase
-Status: Phase Complete (verified by human)
-Last activity: 2026-02-15 -- Phase 2 verified and approved
+Phase: 3 of 4 (Group Management)
+Plan: 1 of 2 in current phase
+Status: Plan 03-01 complete
+Last activity: 2026-02-15 -- Completed 03-01 group data model and service layer
 
-Progress: [######░░░░] 60%
+Progress: [#######░░░] 70%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
+- Total plans completed: 6
 - Average duration: 5min
-- Total execution time: 0.42 hours
+- Total execution time: 0.47 hours
 
 **By Phase:**
 
@@ -29,9 +29,10 @@ Progress: [######░░░░] 60%
 |-------|-------|-------|----------|
 | 01-contact-import | 3 | 20min | 6.7min |
 | 02-notification-engine | 2 | 5min | 2.5min |
+| 03-group-management | 1 | 3min | 3min |
 
 **Recent Trend:**
-- Last 5 plans: 2min, 3min, 2min, 15min, 3min
+- Last 5 plans: 3min, 2min, 15min, 3min, 3min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -60,6 +61,10 @@ Recent decisions affecting current work:
 - [02-01]: BirthdayListView accepts notificationScheduler parameter early to avoid rewrite when settings page is added
 - [02-02]: SettingsPlaceholderView struct renamed to SettingsView; file path kept to minimize churn
 - [02-02]: Post-import rescheduling wired both inline in SettingsView and via onImportComplete callback in app root for all import sources
+- [03-01]: Most-permissive-wins for conflicting group notification preferences -- if any group has .both, person gets both
+- [03-01]: Ungrouped contacts default to .both for backward compatibility with Phase 2
+- [03-01]: Bulk membership assignment in syncGroupsFromContacts to avoid SwiftData many-to-many 750x performance issue
+- [03-01]: Fresh CNGroup refetch before every mutation to avoid stale reference errors
 
 ### Pending Todos
 
@@ -73,5 +78,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-15
-Stopped at: Phase 2 verified and approved — ready for Phase 3
-Resume file: .planning/phases/02-notification-engine/02-VERIFICATION.md
+Stopped at: Completed 03-01-PLAN.md
+Resume file: .planning/phases/03-group-management/03-01-SUMMARY.md
