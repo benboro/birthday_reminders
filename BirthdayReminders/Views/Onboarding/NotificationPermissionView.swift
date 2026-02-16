@@ -15,7 +15,7 @@ struct NotificationPermissionView: View {
 
             Image(systemName: "bell.badge.fill")
                 .font(.system(size: 64))
-                .foregroundStyle(.accent)
+                .foregroundStyle(.tint)
 
             Text("Never Miss a Birthday")
                 .font(.title2.bold())
