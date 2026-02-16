@@ -5,23 +5,23 @@
 See: .planning/PROJECT.md (updated 2026-02-15)
 
 **Core value:** Reliable, timely birthday notifications that you can configure per group so the right people get the right level of attention.
-**Current focus:** Phase 3 - Group Management
+**Current focus:** Phase 3 complete, ready for Phase 4
 
 ## Current Position
 
-Phase: 3 of 4 (Group Management)
-Plan: 1 of 2 in current phase
-Status: Plan 03-01 complete
-Last activity: 2026-02-15 -- Completed 03-01 group data model and service layer
+Phase: 3 of 4 (Group Management) -- COMPLETE
+Plan: 2 of 2 in current phase (all complete)
+Status: Phase 03 complete
+Last activity: 2026-02-15 -- Completed 03-02 group management UI
 
-Progress: [#######░░░] 70%
+Progress: [########░░] 80%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 6
-- Average duration: 5min
-- Total execution time: 0.47 hours
+- Total plans completed: 7
+- Average duration: 4.4min
+- Total execution time: 0.50 hours
 
 **By Phase:**
 
@@ -29,10 +29,10 @@ Progress: [#######░░░] 70%
 |-------|-------|-------|----------|
 | 01-contact-import | 3 | 20min | 6.7min |
 | 02-notification-engine | 2 | 5min | 2.5min |
-| 03-group-management | 1 | 3min | 3min |
+| 03-group-management | 2 | 5min | 2.5min |
 
 **Recent Trend:**
-- Last 5 plans: 3min, 2min, 15min, 3min, 3min
+- Last 5 plans: 2min, 15min, 3min, 3min, 2min
 - Trend: stable
 
 *Updated after each plan completion*
@@ -65,6 +65,9 @@ Recent decisions affecting current work:
 - [03-01]: Ungrouped contacts default to .both for backward compatibility with Phase 2
 - [03-01]: Bulk membership assignment in syncGroupsFromContacts to avoid SwiftData many-to-many 750x performance issue
 - [03-01]: Fresh CNGroup refetch before every mutation to avoid stale reference errors
+- [03-02]: Groups toolbar button on topBarLeading (person.3 icon) to avoid crowding settings gear on trailing side
+- [03-02]: Segmented Picker for NotificationPreference -- 3 cases makes segments ideal for quick visual scanning
+- [03-02]: GroupMemberPickerView commits each add/remove immediately rather than batching on dismiss
 
 ### Pending Todos
 
@@ -78,5 +81,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-02-15
-Stopped at: Completed 03-01-PLAN.md
-Resume file: .planning/phases/03-group-management/03-01-SUMMARY.md
+Stopped at: Completed 03-02-PLAN.md (Phase 03 complete)
+Resume file: .planning/phases/03-group-management/03-02-SUMMARY.md
