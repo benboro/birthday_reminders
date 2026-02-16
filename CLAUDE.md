@@ -21,6 +21,8 @@ open BirthdayReminders.xcodeproj
 
 The `.xcodeproj` is gitignored and must be regenerated via XcodeGen on each MacinCloud session.
 
+See `XCODE_SETUP.md` for full setup instructions including an alternative XcodeGen install method when Homebrew permissions are unavailable.
+
 ## Architecture
 
 **Targets**: Two targets defined in `project.yml` — the main `BirthdayReminders` app and `BirthdayRemindersWidget` extension. Both share an app group (`group.com.birthdayreminders`) for SwiftData access.
@@ -33,7 +35,7 @@ The `.xcodeproj` is gitignored and must be regenerated via XcodeGen on each Maci
 - `NotificationScheduler` — Manages up to 64 `UNNotificationRequest` objects (iOS ceiling), sorted nearest-first, with per-group preference resolution (most-permissive wins when a person belongs to multiple groups)
 - `NotificationDelegate` — `UNUserNotificationCenterDelegate` for foreground banners
 
-**Stateless utilities**: `BirthdayCalculator` (enum with static methods for date math, Feb 29 → Mar 1 in non-leap years) and `ContactBridge` (maps CNContact ↔ Person, single source of truth for `keysToFetch`).
+**Stateless utilities**: `BirthdayCalculator` (enum with static methods for date math, Feb 29 → Mar 1 in non-leap years), `ContactBridge` (maps CNContact ↔ Person, single source of truth for `keysToFetch`), and `ContactDetailBridge` (UIKit bridge for presenting `CNContactViewController` from SwiftUI).
 
 **Views**: No explicit ViewModels. Views use `@Query` for SwiftData reads and call services directly. `BirthdayListView` sorts by computed `daysUntilBirthday` in-memory because SwiftData `@Query` can't sort on computed properties. Onboarding is a state machine in `OnboardingFlowView`.
 
