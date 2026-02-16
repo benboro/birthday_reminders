@@ -1,6 +1,6 @@
 import SwiftUI
-import Contacts
-import ContactsUI
+@preconcurrency import Contacts
+@preconcurrency import ContactsUI
 
 /// UIViewControllerRepresentable wrapping CNContactViewController for "Open in Contacts".
 ///

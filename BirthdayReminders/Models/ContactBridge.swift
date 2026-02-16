@@ -1,5 +1,5 @@
-import Contacts
-import ContactsUI
+@preconcurrency import Contacts
+@preconcurrency import ContactsUI
 import SwiftData
 import os
 
