@@ -16,7 +16,7 @@ struct PermissionRequestView: View {
 
             Image(systemName: "person.crop.circle.badge.checkmark")
                 .font(.system(size: 64))
-                .foregroundStyle(.accent)
+                .foregroundStyle(Color.accentColor)
 
             Text("Contact Access")
                 .font(.largeTitle)

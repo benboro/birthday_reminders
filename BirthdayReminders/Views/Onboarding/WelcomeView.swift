@@ -15,7 +15,7 @@ struct WelcomeView: View {
 
             Image(systemName: "gift.fill")
                 .font(.system(size: 64))
-                .foregroundStyle(.accent)
+                .foregroundStyle(Color.accentColor)
 
             Text("Birthday Reminders")
                 .font(.largeTitle)
